@@ -8,30 +8,42 @@ namespace OOP_Tutorial
         int maxSpeed;
     }
 
-    abstract class Animal  // Parent class 
+    // Interface
+    interface IAnimal
     {
-        // Abstract method (does not have a body)
-        public abstract void animalSound();
-
-        public void sleep()
-        {
-            Console.WriteLine("Zzz");
-        }
+        void animalSound(); // interface method (does not have a body)
     }
 
-    class Pig : Animal  //Child class 
+    // Pig "implements" the IAnimal interface
+    class Pig : IAnimal
     {
-        public override void animalSound()
+        public void animalSound()
         {
+            // The body of animalSound() is provided here
             Console.WriteLine("The pig says: wee wee");
         }
     }
 
-    class Dog : Animal  //Child class
+    interface IFirstInterface
     {
-        public override void animalSound()
+        void myMethod(); // interface method
+    }
+
+    interface ISecondInterface
+    {
+        void myOtherMethod(); // interface method
+    }
+
+    // Implement multiple interfaces
+    class DemoClass : IFirstInterface, ISecondInterface
+    {
+        public void myMethod()
         {
-            Console.WriteLine("The dog says: bow wow");
+            Console.WriteLine("Some text..");
+        }
+        public void myOtherMethod()
+        {
+            Console.WriteLine("Some other text...");
         }
     }
 
@@ -39,12 +51,9 @@ namespace OOP_Tutorial
     {
         static void Main(string[] args)
         {
-            Pig myPig = new Pig();  //Create Pig object
-            Dog myDog = new Dog();  //Create Dog object
-
-            myPig.animalSound();
-            myDog.animalSound();
-            myPig.sleep();
+            DemoClass myObj = new DemoClass();
+            myObj.myMethod();
+            myObj.myOtherMethod();
         }
     }
 
