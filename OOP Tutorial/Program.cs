@@ -6,23 +6,16 @@ namespace OOP_Tutorial
     {
         string color;
         int maxSpeed;
-
-        static void Main (string[] args)
-        {
-            Car myObj = new Car();
-            myObj.color = "red";
-            myObj.maxSpeed = 200;
-            Console.WriteLine(myObj.color);
-            Console.WriteLine(myObj.maxSpeed);
-
-        }
     }
 
-    class Animal  // Parent class 
+    abstract class Animal  // Parent class 
     {
-        public virtual void animalSound()
+        // Abstract method (does not have a body)
+        public abstract void animalSound();
+
+        public void sleep()
         {
-            Console.WriteLine("The animal makes a sound");
+            Console.WriteLine("Zzz");
         }
     }
 
@@ -46,13 +39,12 @@ namespace OOP_Tutorial
     {
         static void Main(string[] args)
         {
-            Animal myAnimal = new Animal();  //Create Animal object
-            Animal myPig = new Pig();  //Create Pig object
-            Animal myDog = new Dog();  //Create Dog object
+            Pig myPig = new Pig();  //Create Pig object
+            Dog myDog = new Dog();  //Create Dog object
 
-            myAnimal.animalSound();
             myPig.animalSound();
             myDog.animalSound();
+            myPig.sleep();
         }
     }
 
